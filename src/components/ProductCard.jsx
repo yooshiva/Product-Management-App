@@ -48,7 +48,6 @@ export default function ProductCard({
 
       <div className="product-card-body">
 
-       
         <div className="product-category-tags">
           {product.category.map((genre) => (
             <span key={genre} className="product-category-tag">
@@ -57,7 +56,6 @@ export default function ProductCard({
           ))}
         </div>
 
-     
         <Link
           to={`/product/${product.id}`}
           className="product-card-title"
@@ -65,12 +63,20 @@ export default function ProductCard({
           {product.name}
         </Link>
 
-      
         <div className="product-rating">
           ⭐ {product.rating}
         </div>
 
-      
+
+        <p className="detail-description">
+          {product.description}
+        </p>
+
+
+        <p className="detail-spec">
+          Specification: {product.specification}
+        </p>
+
         <div className="product-card-price mono">
           ₱{product.price.toLocaleString()}
         </div>
@@ -100,7 +106,6 @@ export default function ProductCard({
           </div>
         </div>
 
-       
         <div className="product-card-subtotal">
           <span>Subtotal</span>
 
@@ -109,7 +114,6 @@ export default function ProductCard({
           </span>
         </div>
 
-       
         {isOutOfStock ? (
           <button className="btn btn-disabled" disabled>
             Out of Stock

@@ -35,7 +35,11 @@ export default function Cart({ cart, onChangeCartQuantity, onRemoveFromCart }) {
                   <Link to={`/product/${item.id}`} className="product-card-title">
                     {item.name}
                   </Link>
-                  <span className="product-category-tag">{item.category}</span>
+                  <span className="product-category-tag">
+                    {Array.isArray(item.category)
+                    ? item.category.join(", ")
+                    : item.category}
+                  </span>
                 </div>
                 <div className="mono cart-row-price">₱{item.price.toLocaleString()}</div>
                 <div className="stepper">
