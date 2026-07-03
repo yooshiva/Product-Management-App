@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
 import ProductCard from './ProductCard.jsx'
 import CategoryFilter from './CategoryFilter.jsx'
 
@@ -7,22 +6,22 @@ export default function ProductList({ products, onChangeQuantity, onAddToCart, i
   const [activeCategory, setActiveCategory] = useState('All')
 
   const categories = useMemo(
-  () => [
-    'All',
-    ...new Set(products.flatMap((p) => p.category)),
-  ],
-  [products]
-)
+    () => [
+      'All',
+      ...new Set(products.flatMap((p) => p.category)),
+    ],
+    [products]
+  )
 
   const visibleProducts = useMemo(
-  () =>
-    activeCategory === 'All'
-      ? products
-      : products.filter((p) =>
-          p.category.includes(activeCategory)
-        ),
-  [products, activeCategory]
-)
+    () =>
+      activeCategory === 'All'
+        ? products
+        : products.filter((p) =>
+            p.category.includes(activeCategory)
+          ),
+    [products, activeCategory]
+  )
 
   return (
     <section className="product-list-page">
@@ -33,9 +32,6 @@ export default function ProductList({ products, onChangeQuantity, onAddToCart, i
             {products.length} products · Track stock, update quantities, and add items to cart.
           </p>
         </div>
-        <Link to="/add-product" className="btn btn-secondary">
-          + Add Product
-        </Link>
       </div>
 
       <CategoryFilter
@@ -61,7 +57,9 @@ export default function ProductList({ products, onChangeQuantity, onAddToCart, i
 
       <div className="ledger-footer">
         <span>Total Inventory Value ({products.length} products)</span>
-        <span className="mono ledger-total">₱{inventoryTotal.toLocaleString()}</span>
+        <span className="mono ledger-total">
+          ₱{inventoryTotal.toLocaleString()}
+        </span>
       </div>
     </section>
   )
